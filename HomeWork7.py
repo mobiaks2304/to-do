@@ -8,19 +8,28 @@ while True:
 
     if player_input == '1':
         add = (input('введіть завдання:'))
-        new_task = [add, 'невиконано']
-        to_do.append(new_task)
-        print(to_do)
+        to_do.append(add)
+        
     if player_input == '2':
         try:    
             remove = int(input('введіть номер завдання яке хочете видалити:'))
-            to_do.remove(remove - 1)
         except ValueError:
             print('введи правильне значення')
     
     if player_input == '3':
         print(to_do)
+    
+    if player_input == '4':
+        status = int(input('введіть номер завдання статус якого хочете поміняти:'))
+        with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([to_do[status - 1],'виконане'])
+     
+        
 
     with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
         writer = csv.writer(file)
-        writer.writerow(to_do)
+        writer.writerow([add,'невиконано'])
+    with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
+        writer = csv.writer(file)
+        writer.writerow(to_do.remove[remove - 1])
