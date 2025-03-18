@@ -1,35 +1,12 @@
-import csv
 
 to_do = []
-
+ 
 while True:
-    print("1.Додати завдання 2.Видалити завдання 3.перегляд завдань \n 4.Позначення завдання як виконане  5.нажміть 'q' щоб вийти")
+    print("1.Додати завдання 2.Видалити завдання \n 3.Позначення завдання як виконане 4.видаляння завдання 5.нажміть 'q' щоб вийти")
     player_input = input(':')
 
     if player_input == '1':
-        add = (input('введіть завдання:'))
+        new_task = input('введіть нове завдання:')
+        add = [new_task, 'невиконане']
         to_do.append(add)
-        
-    if player_input == '2':
-        try:    
-            remove = int(input('введіть номер завдання яке хочете видалити:'))
-        except ValueError:
-            print('введи правильне значення')
-    
-    if player_input == '3':
         print(to_do)
-    
-    if player_input == '4':
-        status = int(input('введіть номер завдання статус якого хочете поміняти:'))
-        with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
-            writer = csv.writer(file)
-            writer.writerow([to_do[status - 1],'виконане'])
-     
-        
-
-    with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
-        writer = csv.writer(file)
-        writer.writerow([add,'невиконано'])
-    with open('todo.csv', mode = 'a',encoding='UTF-8') as file:
-        writer = csv.writer(file)
-        writer.writerow(to_do.remove[remove - 1])
