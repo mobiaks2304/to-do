@@ -7,7 +7,7 @@ while True:
 
     if player_input == '1':
         new_task = input('введіть нове завдання:')
-        status = ['невиконане']
+        status.append('невиконане')
         to_do.append(new_task)
         print(to_do,status)
     if player_input == '2':
@@ -20,8 +20,12 @@ while True:
     if player_input == '4':
         stat = int(input('введіть номер завдання статус якого хочете поміняти:'))
         status[stat - 1] = 'виконане'
-        print(to_do,status)
-    # with open('todo.csv','a', encoding='utf-8') as file:
+        
+    with open('todo.csv','w', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow(to_do)
+        writer.writerow(status)
 
+        
 
 
